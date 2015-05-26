@@ -314,21 +314,28 @@
 					</plugin> -->
 
  <plugin>
-                    <groupId>com.lazerycode.jmeter</groupId>
-                    <artifactId>jmeter-maven-plugin</artifactId>
-                    <version>1.10.1</version>
-                    <executions>
-                        <execution>
-                            <id>jmeter-tests</id>
-                            <phase>verify</phase>
-                            <goals>
-                                <goal>jmeter</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-				</plugins>
+			<groupId>org.apache.jmeter</groupId>
+			<artifactId>maven-jmeter-plugin</artifactId>
+			<version>1.0</version>
+			<executions>
+				<execution>
+					<id>jmeter-tests</id>
+					<phase>integration-test</phase>
+					<goals>
+						<goal>jmeter</goal>
+					</goals>
+				</execution>
+			</executions>
+			<configuration>
+				<reportDir>
+					${project.build.directory}/jmeter-reports
+				</reportDir>
+				<jmeterUserProperties>
+					   <hostname>localhost</hostname>
+			       	  	   <port>9080</port>
+       	  	  	  	</jmeterUserProperties>
+			</configuration>
+		</plugin>
 				<pluginManagement>
 					<plugins>
 						<plugin>
